@@ -1,0 +1,2 @@
+# BuzzEarn
+Earn naira 
