@@ -1,0 +1,104 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BuzzEarn - Earn Daily</title>
+<link rel="icon" href="buzzearn_icon.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}body{background:#f6f8ff}
+.top{background:#fff;color:#0a58f5;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.logo{display:flex;align-items:center;gap:8px;font-weight:900;font-size:20px}.logo img{height:36px}
+.btn{padding:11px 18px;border-radius:8px;border:none;font-weight:700;cursor:pointer}.btn-p{background:#0a58f5;color:#fff}.btn-g{background:#00b050;color:#fff}.btn-dark{background:#1e2d50;color:#fff}
+.card{background:#fff;border:1px solid #e6ebf5;border-radius:14px;padding:16px;margin:10px 0}
+.badge{padding:4px 10px;border-radius:20px;font-size:12px;font-weight:800}
+.b30{background:#e8f7ff;color:#0a58f5}.b50{background:#fff2d6;color:#8a5a00}.b100{background:#e6ffe9;color:#0a7a1a}.b150{background:#ffe0e0;color:#a00}
+.input{width:100%;padding:12px;border:1px solid #d9e1f2;border-radius:8px;margin:8px 0}.hide{display:none}
+.social-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.social-box{border:1px solid #e6ebf5;border-radius:10px;padding:10px;background:#fff}
+.social-box b{font-size:11px}.social-box input{width:100%;padding:8px;border:1px solid #eee;border-radius:6px;margin-top:4px;font-size:12px}
+.task{display:flex;justify-content:space-between;align-items:center;padding:14px;border-bottom:1px solid #f0f0f0}
+.stat{background:#1e2d50;color:#fff;border-radius:12px;padding:14px;text-align:center}
+.hero-logo{width:100%;max-width:320px;margin:10px auto;display:block}
+</style></head><body>
+<div class="top"><div class="logo"><img src="buzzearn_logo.png" alt="BuzzEarn"><span style="color:#0a58f5">Buzz</span><span style="color:#ffb700">Earn</span></div><button style="background:#0a58f5;color:#fff;padding:7px 14px;border:none;border-radius:6px;font-weight:700" onclick="show('login')">Login</button></div>
+
+<div id="landing"><div style="padding:20px;max-width:1100px;margin:auto;text-align:center">
+<img src="buzzearn_logo.png" class="hero-logo">
+<h1 style="font-size:28px;color:#0a58f5;font-weight:800">Make ₦3,000 Daily With <span style="color:#111">BuzzEarn</span></h1>
+<p style="font-size:13px;color:#555;margin:10px 0">IG, TikTok, X, Facebook, WhatsApp Channel, Telegram, Audiomack, LinkedIn, Discord, YouTube, Threads, Snapchat - 12 Socials</p>
+<button class="btn btn-p" onclick="show('register')">Get Started Pay ₦500 →</button>
+<button class="btn btn-g" onclick="show('login')">Login →</button>
+<div class="card" style="margin-top:12px"><b>💚 WhatsApp Channel + ✈️ Telegram Channel Added!</b><br><small>All tasks get link - Join channel to earn!</small></div>
+</div></div>
+
+<div id="register" class="hide" style="padding:20px;max-width:500px;margin:auto"><h2>Create Account ₦500</h2>
+<input id="r_name" class="input" placeholder="Full Name"><input id="r_phone" class="input" placeholder="Phone"><input id="r_pass" class="input" type="password" placeholder="Password">
+<button class="btn btn-p" style="width:100%" onclick="doRegister()">Pay ₦500 & Create</button></div>
+
+<div id="login" class="hide" style="padding:20px;max-width:500px;margin:auto"><h2>Login</h2>
+<input id="l_phone" class="input" placeholder="Phone"><input id="l_pass" class="input" type="password" placeholder="Password">
+<button class="btn btn-p" style="width:100%" onclick="doLogin()">Login</button><p style="font-size:11px;margin-top:10px">Admin: admin / admin123</p></div>
+
+<div id="addsocial" class="hide" style="padding:16px;max-width:700px;margin:auto"><h2>Link Your Socials - Add at least 3</h2>
+<div class="social-grid">
+<div class="social-box"><b>📸 Instagram</b><input id="s_ig" placeholder="@username"></div>
+<div class="social-box"><b>🎵 TikTok</b><input id="s_tiktok" placeholder="@username"></div>
+<div class="social-box"><b>✖️ X (Twitter)</b><input id="s_x" placeholder="@username"></div>
+<div class="social-box"><b>👥 Facebook</b><input id="s_fb" placeholder="Profile link"></div>
+<div class="social-box"><b>💚 WhatsApp Channel No</b><input id="s_whatsapp" placeholder="080..."></div>
+<div class="social-box"><b>✈️ Telegram</b><input id="s_tg" placeholder="@username"></div>
+<div class="social-box"><b>🎧 Audiomack</b><input id="s_audio" placeholder="Username"></div>
+<div class="social-box"><b>💼 LinkedIn</b><input id="s_linkedin" placeholder="Link"></div>
+<div class="social-box"><b>🎮 Discord</b><input id="s_discord" placeholder="Tag"></div>
+<div class="social-box"><b>▶️ YouTube</b><input id="s_yt" placeholder="Channel"></div>
+<div class="social-box"><b>🧵 Threads</b><input id="s_threads" placeholder="@username"></div>
+<div class="social-box"><b>👻 Snapchat</b><input id="s_snap" placeholder="Username"></div>
+</div><button class="btn btn-p" style="width:100%;margin-top:16px" onclick="saveSocial()">Save & Dashboard</button></div>
+
+<div id="userdash" class="hide" style="padding:14px;max-width:700px;margin:auto">
+<div class="card" style="text-align:center;background:linear-gradient(135deg,#0a58f5,#1e2d50);color:#fff;border:none"><small>Balance</small><h1 id="u_bal">₦0</h1><small id="u_name"></small></div>
+<div id="taskList"></div>
+<div class="card"><h4>Withdraw Min ₦2000</h4><input id="w_amount" class="input" placeholder="Amount"><input id="w_bank" class="input" placeholder="Bank + Acct"><button class="btn btn-g" style="width:100%" onclick="doWithdraw()">Request Withdrawal</button></div>
+</div>
+
+<div id="proofModal" class="hide" style="position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;display:flex;align-items:center;justify-content:center;padding:16px"><div class="card" style="width:100%;max-width:400px"><h4 id="proofTaskTitle"></h4><input id="proofUser" class="input" placeholder="Username used"><input type="file" id="proofFile" class="input" accept="image/*"><img id="proofPreview" style="width:100%;display:none;border-radius:8px"><button class="btn btn-p" style="width:100%;margin-top:10px" onclick="submitProof()">Submit Proof</button><button class="btn" style="width:100%;margin-top:6px" onclick="closeProof()">Cancel</button></div></div>
+
+<div id="admin" class="hide" style="padding:14px;max-width:1000px;margin:auto"><h2>Owner Panel</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:12px 0"><div class="stat"><h2 id="a_users">0</h2><small>Users</small></div><div class="stat" style="background:#0a58f5"><h2 id="a_pending">0</h2><small>Pending</small></div><div class="stat" style="background:#00b050"><h2 id="a_profit">₦0</h2><small>Profit</small></div></div>
+<div style="display:flex;gap:8px;overflow:auto"><button class="btn btn-p" onclick="adminTab('proofs')">Proofs</button><button class="btn btn-dark" onclick="adminTab('tasks')">Tasks</button><button class="btn btn-dark" onclick="adminTab('users')">Users</button><button class="btn btn-dark" onclick="adminTab('withdraws')">Withdraws</button></div>
+<div id="admin_proofs"></div><div id="admin_tasks" class="hide"><div class="card"><input id="nt_title" class="input" placeholder="Title e.g Join WhatsApp Channel"><input id="nt_link" class="input" placeholder="Paste WhatsApp Channel link https://whatsapp.com/channel/... or Telegram https://t.me/..."><select id="nt_value" class="input"><option value="30">₦30</option><option value="50" selected>₦50</option><option value="100">₦100</option><option value="150">₦150</option></select><button class="btn btn-p" style="width:100%" onclick="addTask()">Add Task With Link</button></div><div id="adminTaskList"></div></div><div id="admin_users" class="hide"></div><div id="admin_withdraws" class="hide"></div></div>
+
+<script>
+let db=JSON.parse(localStorage.getItem('buzzearn_db')||'{}');if(!db.users)db={users:[],tasks:[],subs:[],withdraws:[]};
+if(db.tasks.length===0){db.tasks=[
+{id:1,title:'📸 Follow IG @buzzearn',link:'https://instagram.com',value:50},
+{id:2,title:'💚 Join WhatsApp Channel - BuzzEarn Official',link:'https://whatsapp.com/channel/0029VawBuzzEarnDemo',value:50},
+{id:3,title:'✈️ Join Telegram Channel @BuzzEarnNG',link:'https://t.me/BuzzEarnNG',value:50},
+{id:4,title:'✖️ Follow on X',link:'https://x.com',value:50},
+{id:5,title:'🎧 Stream Audiomack',link:'https://audiomack.com',value:100},
+{id:6,title:'👥 Like Facebook Page',link:'https://facebook.com',value:30},
+{id:7,title:'▶️ Subscribe YouTube',link:'https://youtube.com',value:100},
+{id:8,title:'💚 React to WhatsApp Channel Post',link:'https://whatsapp.com/channel/0029VawBuzzEarnDemo',value:30},
+{id:9,title:'✈️ View Telegram Post',link:'https://t.me/BuzzEarnNG',value:30},
+{id:10,title:'🎮 Join Discord',link:'https://discord.com',value:100},
+{id:11,title:'💚 Share WhatsApp Channel to 5 groups - screenshot',link:'https://whatsapp.com/channel/0029VawBuzzEarnDemo',value:150}
+];localStorage.setItem('buzzearn_db',JSON.stringify(db));}
+let curUser=null,curProofTask=null;function saveDB(){localStorage.setItem('buzzearn_db',JSON.stringify(db));}
+function show(id){['landing','register','login','addsocial','userdash','admin'].forEach(x=>document.getElementById(x).classList.add('hide'));document.getElementById(id).classList.remove('hide');}
+function doRegister(){const n=document.getElementById('r_name').value,p=document.getElementById('r_phone').value,ps=document.getElementById('r_pass').value;if(!n||!p||!ps)return alert('Fill all');const u={id:Date.now(),name:n,phone:p,pass:ps,balance:0,done:0,social:{}};db.users.push(u);saveDB();curUser=u;show('addsocial');}
+function saveSocial(){const s={ig:document.getElementById('s_ig').value,tiktok:document.getElementById('s_tiktok').value,x:document.getElementById('s_x').value,fb:document.getElementById('s_fb').value,whatsapp:document.getElementById('s_whatsapp').value,tg:document.getElementById('s_tg').value,audio:document.getElementById('s_audio').value,linkedin:document.getElementById('s_linkedin').value,discord:document.getElementById('s_discord').value,yt:document.getElementById('s_yt').value,threads:document.getElementById('s_threads').value,snap:document.getElementById('s_snap').value};if(Object.values(s).filter(v=>v).length<3)return alert('Add at least 3');curUser.social=s;const i=db.users.findIndex(u=>u.id===curUser.id);db.users[i]=curUser;saveDB();openUserDash();}
+function doLogin(){const ph=document.getElementById('l_phone').value,ps=document.getElementById('l_pass').value;if(ph==='admin'&&ps==='admin123'){show('admin');loadAdmin();return;}const u=db.users.find(u=>u.phone===ph&&u.pass===ps);if(!u)return alert('Wrong');curUser=u;if(!u.social||Object.keys(u.social).length===0)show('addsocial');else openUserDash();}
+function openUserDash(){show('userdash');renderTasks();document.getElementById('u_bal').innerText='₦'+curUser.balance;document.getElementById('u_name').innerText=curUser.name;}
+function renderTasks(){let h='<div class="card"><b>Tasks - Tap Do Task to open WhatsApp/Telegram link</b></div>';db.tasks.forEach(t=>{const c=t.value==30?'b30':t.value==50?'b50':t.value==100?'b100':'b150';h+=`<div class="card task"><div><b style="font-size:13px">${t.title}</b><br><small style="font-size:10px;color:#0a58f5">${t.link}</small></div><div style="text-align:right"><div class="badge ${c}">₦${t.value}</div><button class="btn btn-p" style="padding:6px 10px;font-size:11px;margin-top:6px" onclick="openProof(${t.id})">Do Task</button></div></div>`;});document.getElementById('taskList').innerHTML=h;}
+function openProof(id){curProofTask=db.tasks.find(t=>t.id===id);document.getElementById('proofTaskTitle').innerText=curProofTask.title+' - Link: '+curProofTask.link;document.getElementById('proofModal').classList.remove('hide');document.getElementById('proofModal').style.display='flex';window.open(curProofTask.link,'_blank');}
+function closeProof(){document.getElementById('proofModal').classList.add('hide');document.getElementById('proofModal').style.display='none';}
+document.getElementById('proofFile').addEventListener('change',e=>{const f=e.target.files[0];const r=new FileReader();r.onload=()=>{document.getElementById('proofPreview').src=r.result;document.getElementById('proofPreview').style.display='block';};r.readAsDataURL(f);});
+function submitProof(){const u=document.getElementById('proofUser').value,img=document.getElementById('proofPreview').src;if(!u||!img)return alert('Add username + screenshot');db.subs.push({id:Date.now(),userId:curUser.id,userName:curUser.name,taskTitle:curProofTask.title,taskValue:curProofTask.value,proofUser:u,screenshot:img,status:'pending'});saveDB();alert('Proof submitted!');closeProof();}
+function doWithdraw(){const a=parseInt(document.getElementById('w_amount').value),b=document.getElementById('w_bank').value;if(!a||!b)return alert('Fill');if(a<2000)return alert('Min 2000');if(a>curUser.balance)return alert('Low bal');db.withdraws.push({id:Date.now(),userId:curUser.id,userName:curUser.name,amount:a,bank:b,status:'pending'});curUser.balance-=a;const i=db.users.findIndex(u=>u.id===curUser.id);db.users[i]=curUser;saveDB();document.getElementById('u_bal').innerText='₦'+curUser.balance;alert('Sent!');}
+function loadAdmin(){document.getElementById('a_users').innerText=db.users.length;document.getElementById('a_pending').innerText=db.subs.filter(s=>s.status==='pending').length;document.getElementById('a_profit').innerText='₦'+(db.users.length*500);adminTab('proofs');}
+function adminTab(t){['proofs','tasks','users','withdraws'].forEach(x=>document.getElementById('admin_'+x).classList.add('hide'));document.getElementById('admin_'+t).classList.remove('hide');if(t==='proofs')renderAdminProofs();if(t==='tasks')renderAdminTasks();if(t==='users')renderAdminUsers();if(t==='withdraws')renderAdminWithdraws();}
+function renderAdminProofs(){let h='';db.subs.filter(s=>s.status==='pending').forEach(s=>{h+=`<div class="card"><b>${s.taskTitle} - ₦${s.taskValue}</b><br><small>${s.userName} - ${s.proofUser}</small><br><img src="${s.screenshot}" style="width:100%;max-width:300px;border-radius:8px;margin:8px 0"><br><button class="btn btn-g" onclick="approveSub(${s.id})">Accept</button> <button class="btn btn-dark" onclick="rejectSub(${s.id})">Reject</button></div>`;});document.getElementById('admin_proofs').innerHTML=h||'<div class="card">No pending</div>';}
+function approveSub(id){const s=db.subs.find(x=>x.id===id);s.status='approved';const u=db.users.find(x=>x.id===s.userId);u.balance+=s.taskValue;u.done+=1;saveDB();renderAdminProofs();loadAdmin();}
+function rejectSub(id){db.subs.find(x=>x.id===id).status='rejected';saveDB();renderAdminProofs();}
+function addTask(){const t=document.getElementById('nt_title').value,l=document.getElementById('nt_link').value,v=parseInt(document.getElementById('nt_value').value);if(!t||!l)return alert('Add title + link');db.tasks.push({id:Date.now(),title:t,link:l,value:v});saveDB();renderAdminTasks();alert('Task added!');}
+function renderAdminTasks(){let h='';db.tasks.forEach(t=>{h+=`<div class="card task"><div><b>${t.title}</b><br><small>${t.link} - ₦${t.value}</small></div><button class="btn btn-dark" onclick="deleteTask(${t.id})">Del</button></div>`;});document.getElementById('adminTaskList').innerHTML=h;}
+function deleteTask(id){db.tasks=db.tasks.filter(t=>t.id!==id);saveDB();renderAdminTasks();}
+function renderAdminUsers(){let h='';db.users.forEach(u=>{h+=`<div class="card"><b>${u.name}</b> - ${u.phone} - ₦${u.balance}<br><small>${JSON.stringify(u.social).slice(0,100)}</small></div>`;});document.getElementById('admin_users').innerHTML=h;}
+function renderAdminWithdraws(){let h='';db.withdraws.forEach(w=>{h+=`<div class="card"><b>${w.userName} - ₦${w.amount}</b><br><small>${w.bank}</small></div>`;});document.getElementById('admin_withdraws').innerHTML=h||'<div class="card">No withdraws</div>';}
+</script></body></html>
