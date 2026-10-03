@@ -1,0 +1,44 @@
+<!-- BALANCE -->
+<h1 id="balance">₦0</h1>
+<p>Your Real Earnings</p>
+
+<!-- WITHDRAW BUTTON -->
+<button id="withdrawBtn" disabled>Withdraw - Min ₦2000</button>
+<p id="withdrawMsg"></p>
+
+<script>
+let totalEarned = 0; // Start ₦0
+
+function addTaskMoney(amount) {
+  totalEarned = totalEarned + amount;
+  document.getElementById("balance").innerText = "₦" + totalEarned;
+  
+  // Check withdrawal
+  let btn = document.getElementById("withdrawBtn");
+  let msg = document.getElementById("withdrawMsg");
+  
+  if (totalEarned >= 2000) {
+    btn.disabled = false;
+    btn.innerText = "Withdraw ₦" + totalEarned + " Now!";
+    btn.style.background = "green";
+    msg.innerText = "✅ You can withdraw now! No scam!";
+  } else {
+    btn.disabled = true;
+    btn.innerText = "Need ₦" + (2000 - totalEarned) + " more to withdraw";
+    msg.innerText = "Do more tasks to reach ₦2000";
+  }
+}
+
+// EXAMPLE:
+// User do tasks
+addTaskMoney(50);   // Balance ₦50 - can't withdraw
+addTaskMoney(109);  // Balance ₦159 - like your video - can't withdraw yet
+addTaskMoney(1841); // Balance ₦2000 - NOW CAN WITHDRAW!
+// addTaskMoney(500); // Balance ₦2500 - Can withdraw ₦2500!
+
+// When dem click withdraw
+document.getElementById("withdrawBtn").onclick = function() {
+  alert("Request sent! You go receive ₦" + totalEarned + " for your Opay! No scam - Real!");
+  // Here you go pay them for Opay
+}
+</script>
